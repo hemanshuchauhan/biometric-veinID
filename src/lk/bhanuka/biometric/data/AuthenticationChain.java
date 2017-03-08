@@ -22,6 +22,8 @@ public class AuthenticationChain {
         
         this.authenticators.add(new BasicAuth());
         this.authenticators.add(new ShiftAuth());
+        this.authenticators.add(new FadeAuth());
+        this.authenticators.add(new FadeLineOverlap());
         
         for(int i=0; i < (this.authenticators.size() - 1); i++){
             this.authenticators.get(i).setNext(this.authenticators.get(i + 1));

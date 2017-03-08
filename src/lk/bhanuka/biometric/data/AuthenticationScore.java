@@ -17,6 +17,10 @@ public class AuthenticationScore {
     public Float shiftAuth;
     public int shiftFactor;
     
+    public Float fadeAuth;
+    
+    public Float fadeLineOverlap;
+    
     public Float getConfidenceLevel(){
         return 1.0f;
     }

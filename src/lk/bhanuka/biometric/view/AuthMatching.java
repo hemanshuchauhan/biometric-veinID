@@ -57,6 +57,8 @@ public class AuthMatching extends javax.swing.JFrame {
         tableHeaders.add("Basic Match");
         tableHeaders.add("Shift Mtach");
         tableHeaders.add("Shift Factor");
+        tableHeaders.add("Fade Match");
+        tableHeaders.add("Fade Line Overlap");
         
         for(User user: data.keySet()){
             
@@ -65,7 +67,9 @@ public class AuthMatching extends javax.swing.JFrame {
             oneRow.add(this.data.get(user).basicMatch);
             oneRow.add(data.get(user).shiftAuth);
             oneRow.add(data.get(user).shiftFactor);
-        
+            oneRow.add(this.data.get(user).fadeAuth);
+            oneRow.add(data.get(user).fadeLineOverlap);
+            
             tableData.add(oneRow);
         }
         
