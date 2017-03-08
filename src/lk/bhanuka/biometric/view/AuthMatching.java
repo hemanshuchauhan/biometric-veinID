@@ -33,7 +33,7 @@ package lk.bhanuka.biometric.view;
 import java.util.Map;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
-import lk.bhanuka.biometric.data.AuthenticationScore;
+import lk.bhanuka.biometric.auth.AuthenticationScore;
 import lk.bhanuka.biometric.data.User;
 
 public class AuthMatching extends javax.swing.JFrame {
@@ -59,16 +59,18 @@ public class AuthMatching extends javax.swing.JFrame {
         tableHeaders.add("Shift Factor");
         tableHeaders.add("Fade Match");
         tableHeaders.add("Fade Line Overlap");
+        tableHeaders.add("Confidence");
         
         for(User user: data.keySet()){
             
             Vector<Object> oneRow = new Vector<Object>();
             oneRow.add(user.getName());
-            oneRow.add(this.data.get(user).basicMatch);
-            oneRow.add(data.get(user).shiftAuth);
-            oneRow.add(data.get(user).shiftFactor);
-            oneRow.add(this.data.get(user).fadeAuth);
-            oneRow.add(data.get(user).fadeLineOverlap);
+            oneRow.add(this.data.get(user).basicMatch * 100);
+            oneRow.add(data.get(user).shiftAuth* 100);
+            oneRow.add(data.get(user).shiftFactor* 100);
+            oneRow.add(this.data.get(user).fadeAuth* 100);
+            oneRow.add(data.get(user).fadeLineOverlap* 100);
+            oneRow.add(data.get(user).getConfidenceLevel()* 100);
             
             tableData.add(oneRow);
         }

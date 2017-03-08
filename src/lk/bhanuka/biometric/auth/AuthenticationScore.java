@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lk.bhanuka.biometric.data;
+package lk.bhanuka.biometric.auth;
 
 /**
  *
@@ -22,7 +22,12 @@ public class AuthenticationScore {
     public Float fadeLineOverlap;
     
     public Float getConfidenceLevel(){
-        return 1.0f;
+        if(this.basicMatch == 1.0f){
+            return 1.0f;
+        }
+        else{
+            return 0.0f;
+        }
     }
     
 }

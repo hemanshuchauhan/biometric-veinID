@@ -6,7 +6,7 @@
 package lk.bhanuka.biometric.controller;
 
 import java.util.Map;
-import lk.bhanuka.biometric.data.AuthenticationScore;
+import lk.bhanuka.biometric.auth.AuthenticationScore;
 import lk.bhanuka.biometric.data.User;
 import lk.bhanuka.biometric.view.AuthMatching;
 import lk.bhanuka.biometric.view.Main;

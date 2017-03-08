@@ -37,7 +37,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import lk.bhanuka.biometric.controller.AuthenticationController;
 import lk.bhanuka.biometric.controller.NavigationController;
-import lk.bhanuka.biometric.data.AuthenticationRequest;
+import lk.bhanuka.biometric.auth.AuthenticationRequest;
 
 public class Main extends javax.swing.JFrame {
     

@@ -6,8 +6,8 @@
 package lk.bhanuka.biometric.controller;
 
 import java.io.IOException;
-import lk.bhanuka.biometric.data.AuthenticationRequest;
-import lk.bhanuka.biometric.data.Authenticator;
+import lk.bhanuka.biometric.auth.AuthenticationRequest;
+import lk.bhanuka.biometric.auth.Authenticator;
 
 /**
  *

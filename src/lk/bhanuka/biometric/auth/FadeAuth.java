@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lk.bhanuka.biometric.data;
+package lk.bhanuka.biometric.auth;
 
+import lk.bhanuka.biometric.data.User;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +26,12 @@ public class FadeAuth extends AuthUnit{
         for(int i =0; i < requestId.size(); i++){
             
             for(int j=0 ; j< requestId.get(i).length; j++){
-                count ++;
-                if(requestId.get(i)[j].equals(userId.get(i)[j])){
-                    successCount ++;
+                
+                if(requestId.get(i)[j].equals("1")){
+                    count ++;
+                    if(requestId.get(i)[j].equals(userId.get(i)[j])){
+                        successCount ++;
+                    }
                 }
             }
         }

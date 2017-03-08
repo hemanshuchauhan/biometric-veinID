@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lk.bhanuka.biometric.data;
+package lk.bhanuka.biometric.auth;
 
+import lk.bhanuka.biometric.data.User;
+import lk.bhanuka.biometric.data.FileReader;
+import lk.bhanuka.biometric.data.UserRepository;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
