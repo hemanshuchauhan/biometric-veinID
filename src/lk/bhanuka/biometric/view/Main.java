@@ -37,6 +37,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import lk.bhanuka.biometric.controller.AuthenticationController;
 import lk.bhanuka.biometric.controller.NavigationController;
+import lk.bhanuka.biometric.data.AuthenticationRequest;
 
 public class Main extends javax.swing.JFrame {
     
@@ -48,6 +49,13 @@ public class Main extends javax.swing.JFrame {
     
     private void initialize(){
         this.fileChooser = new JFileChooser();
+    }
+    
+    private AuthenticationRequest generateRequest(){
+        AuthenticationRequest request = new AuthenticationRequest();
+        request.inputFile = this.fileChooser.getSelectedFile();
+        
+        return request;
     }
     
     /** This method is called from within the constructor to
@@ -71,7 +79,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel1.setText("Find What:");
 
-        jButton1.setText("Find");
+        jButton1.setText("Browse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -109,7 +117,7 @@ public class Main extends javax.swing.JFrame {
                         .addContainerGap()
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(txtFileName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                        .add(txtFileName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -163,10 +171,11 @@ public class Main extends javax.swing.JFrame {
         }
         else{
             try {
-                AuthenticationController.checkAuthentication(this.fileChooser.getSelectedFile());
+                AuthenticationController.checkAuthentication(this.generateRequest());
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, "Unable to read the file");
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
     }//GEN-LAST:event_txtSearchActionPerformed
 

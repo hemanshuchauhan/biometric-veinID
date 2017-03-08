@@ -5,6 +5,10 @@
  */
 package lk.bhanuka.biometric.controller;
 
+import java.util.Map;
+import lk.bhanuka.biometric.data.AuthenticationScore;
+import lk.bhanuka.biometric.data.User;
+import lk.bhanuka.biometric.view.AuthMatching;
 import lk.bhanuka.biometric.view.Main;
 
 /**
@@ -16,6 +20,11 @@ public class NavigationController {
     public static void Launch(){
         Main mainFrame = new Main();
         mainFrame.setVisible(true);
+    }
+    
+    public static void openAuthMatchPage(Map<User, AuthenticationScore> data){
+        AuthMatching authPage = new AuthMatching(data);
+        authPage.setVisible(true);
     }
     
     public static void exit(){

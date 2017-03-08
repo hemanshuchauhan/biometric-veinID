@@ -5,20 +5,17 @@
  */
 package lk.bhanuka.biometric.data;
 
+import java.io.File;
+import java.util.List;
+
 /**
  *
  * @author bhanuka
  */
-public class AuthenticationScore {
+public class AuthenticationRequest {
     
+    public File inputFile;
     
-    public Float basicMatch;
-    
-    public Float shiftAuth;
-    public int shiftFactor;
-    
-    public Float getConfidenceLevel(){
-        return 1.0f;
-    }
+    public List<String[]> veinId;
     
 }

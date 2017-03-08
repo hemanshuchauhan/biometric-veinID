@@ -5,13 +5,9 @@
  */
 package lk.bhanuka.biometric.controller;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import lk.bhanuka.biometric.data.User;
-import lk.bhanuka.biometric.data.UserRepository;
+import lk.bhanuka.biometric.data.AuthenticationRequest;
+import lk.bhanuka.biometric.data.Authenticator;
 
 /**
  *
@@ -19,9 +15,10 @@ import lk.bhanuka.biometric.data.UserRepository;
  */
 public class AuthenticationController {
     
-    public static void checkAuthentication(File inputFile) throws FileNotFoundException, IOException{
-        
-        System.out.println("Checking authentication");
+    private static final Authenticator authenticator = new Authenticator();
+    
+    public static void checkAuthentication(AuthenticationRequest request) throws IOException{
+        NavigationController.openAuthMatchPage(AuthenticationController.authenticator.checkAuthentication(request));
     }
     
 }
