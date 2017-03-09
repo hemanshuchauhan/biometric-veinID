@@ -38,7 +38,7 @@ import lk.bhanuka.biometric.data.User;
 
 public class AuthMatching extends javax.swing.JFrame {
     
-    private Map<User, AuthenticationScore> data;
+    private Map<User, AuthenticationScore> data;  
     
     public AuthMatching(Map<User,AuthenticationScore> data) {
         initComponents();
@@ -61,17 +61,24 @@ public class AuthMatching extends javax.swing.JFrame {
         tableHeaders.add("Fade Line Overlap");
         tableHeaders.add("Confidence");
         
+        float maxScore = 0.0f;
+        
         for(User user: data.keySet()){
             
             Vector<Object> oneRow = new Vector<Object>();
             oneRow.add(user.getName());
             oneRow.add(this.data.get(user).basicMatch * 100);
             oneRow.add(data.get(user).shiftAuth* 100);
-            oneRow.add(data.get(user).shiftFactor* 100);
+            oneRow.add(data.get(user).shiftFactor);
             oneRow.add(this.data.get(user).fadeAuth* 100);
             oneRow.add(data.get(user).fadeLineOverlap* 100);
             oneRow.add(data.get(user).getConfidenceLevel()* 100);
             
+            if(data.get(user).getConfidenceLevel() > maxScore){
+                this.txtConfidence.setText(Float.toString(data.get(user).getConfidenceLevel()*100f) + " % ");
+                this.txtUsername.setText(user.getName());
+                maxScore = data.get(user).getConfidenceLevel();
+            }
             tableData.add(oneRow);
         }
         
@@ -88,9 +95,8 @@ public class AuthMatching extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        txtUsername = new javax.swing.JTextField();
+        txtConfidence = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUsers = new javax.swing.JTable();
@@ -100,17 +106,9 @@ public class AuthMatching extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(" Position/Direction "));
 
-        jLabel1.setText("Direction [°]:");
+        jLabel1.setText("User");
 
-        jLabel2.setText("Height [m]:");
-
-        jTextField1.setText("140.000");
-
-        jTextField2.setText("110.000");
-
-        jCheckBox1.setText("Height is Lower Edge (Not Center)");
-        jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jLabel2.setText("Confidence");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,9 +121,8 @@ public class AuthMatching extends javax.swing.JFrame {
                     .add(jLabel1))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jCheckBox1)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
+                    .add(txtConfidence, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+                    .add(txtUsername, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -133,14 +130,12 @@ public class AuthMatching extends javax.swing.JFrame {
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(txtUsername, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jCheckBox1)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(txtConfidence, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(" System "));
@@ -201,15 +196,14 @@ public class AuthMatching extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tableUsers;
+    private javax.swing.JTextField txtConfidence;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
     
 }

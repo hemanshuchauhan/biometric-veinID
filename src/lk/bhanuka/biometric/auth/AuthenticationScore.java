@@ -26,7 +26,7 @@ public class AuthenticationScore {
             return 1.0f;
         }
         else{
-            return 0.0f;
+            return (Float)((basicMatch + 0.5f*(10 - shiftFactor) * shiftAuth/10f + 0.3f* fadeAuth + 0.2f * fadeLineOverlap)/2.0f);
         }
     }
     

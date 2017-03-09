@@ -16,7 +16,6 @@ public class BasicAuth extends AuthUnit{
     @Override
     protected void authenticate(User user, AuthenticationRequest request, AuthenticationScore score) {
         
-        System.out.println("performing basic authentication");
         int count = 0;
         int successCount = 0;
         
